@@ -1,0 +1,22 @@
+import React from "react";
+import { mount } from "enzyme";
+import Profile from "./Profile";
+
+const user = {
+    name: "John Doe",
+    email: "johndoe@gmail.com",
+    username: "john.doe",
+    image: null,
+  };
+  
+  describe("<Profile />", () => {
+    it("contains h4", () => {
+      const wrapper = mount(<Profile user={user} />);
+      const value = wrapper.find("h4").text();
+      expect(value).toEqual("John Doe");
+    });
+    it("accepts user props", () => {
+      const wrapper = mount(<Profile user={user} />);
+      expect(wrapper.props().user).toEqual(user);
+    });
+  });
